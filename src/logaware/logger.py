@@ -68,6 +68,12 @@ class LoggerMetaClass(type):
     """
     def __new__(mcs, name, bases, attrs):
         levels = {}
+        # Inherit base class levels
+        for base in bases:
+            base_levels = getattr(base, '_log_levels', None)
+            if base_levels:
+                levels.update(base_levels)
+
         for key, val in attrs.items():
             if isinstance(val, LogLevel):
                 levels[val.level] = val

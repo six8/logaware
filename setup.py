@@ -21,7 +21,7 @@ def _read(*names, **kwargs):
 
 setup(
     name='logaware',
-    version='0.1.0',
+    version='0.2.0',
     license='BSD',
     description='Python Logger that knows where it\'s coming from',
     long_description='%s\n%s' % (
