@@ -265,6 +265,9 @@ def test_custom_level(lastlog):
 
     log = CustomLogger()
 
+    # Verify base levels are inherited
+    assert log.get_level_name(20) == 'INFO'
+    # Verify custom levels
     assert log.get_level_name(42) == 'BLERG'
 
     log.blerg('Blergit!')
