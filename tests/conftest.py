@@ -1,6 +1,6 @@
 import logging
 import pytest
-from io import BytesIO, TextIOWrapper, StringIO
+from io import BytesIO, TextIOWrapper
 
 
 @pytest.fixture
@@ -37,6 +37,7 @@ def lastlog_factory(request):
             raw_stream.seek(0)
             data = raw_stream.read().strip()
             raw_stream.truncate(0)
+            raw_stream.seek(0)
             return data
 
         return log_pop
