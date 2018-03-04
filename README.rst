@@ -31,11 +31,11 @@ logaware
     :alt: PyPI Package monthly downloads
     :target: https://pypi.python.org/pypi/logaware
 
-.. |supported-versions| image:: https://pypip.in/py_versions/logaware/badge.svg?style=flat
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/logaware.svg?style=flat
     :alt: Supported versions
     :target: https://pypi.python.org/pypi/logaware
 
-.. |supported-implementations| image:: https://pypip.in/implementation/logaware/badge.svg?style=flat
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/logaware.svg?style=flat
     :alt: Supported implementations
     :target: https://pypi.python.org/pypi/logaware
 
