@@ -18,9 +18,9 @@ def lastlog_factory(request):
         stream = TextIOWrapper(raw_stream, encoding=encoding)
 
         logger = logging.getLogger(logger)
-        logger.setLevel(0)
+        logger.setLevel(1)
         handler = logging.StreamHandler(stream)
-        handler.setLevel(0)
+        handler.setLevel(logger.level)
         handler.setFormatter(logging.Formatter(format))
         logger.addHandler(handler)
 
