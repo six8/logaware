@@ -176,7 +176,7 @@ class AwareLogger(with_metaclass(LoggerMetaClass)):
             boolean: Whether or not logging is enabled for `level`.
         """
         # _get_caller will only work if the callstack is exactly 3
-        module_name, filename, line_number, func_name = _get_caller()
+        module_name, _, _, _ = _get_caller()
         logger = logging.getLogger(module_name)
         return logger.isEnabledFor(level)
 
