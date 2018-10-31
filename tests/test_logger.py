@@ -307,3 +307,18 @@ def test_custom_level_with_traceback(lastlog):
         assert len(lines) > 1
         assert lines[1].startswith(b'Traceback'), \
             'Expected traceback info in log message'
+
+
+def test_logger_is_enabled_for():
+    """
+    Verify that an AwareLogger can be used like a native logger instance for
+    determining if logging is enabled for a specific log level.
+    """
+    logger = logging.getLogger()
+    previous_level = logger.level
+    logger.setLevel(999)
+    aware_logger = AwareLogger()
+    assert aware_logger.isEnabledFor(999)
+    assert not aware_logger.isEnabledFor(900)
+    assert aware_logger.isEnabledFor(1000)
+    logger.setLevel(previous_level)

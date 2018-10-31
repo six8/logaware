@@ -96,6 +96,8 @@ class AwareLogger(with_metaclass(LoggerMetaClass)):
     example, if this was being called in ``logaware.logger``, the log
     message would include ``logaware.logger`` as the logger name::
 
+        >>> import logging
+        >>> logging.getLogger().setLevel(logging.DEBUG)
         >>> log = AwareLogger()
         >>> log.info('Test message').module
         '...logaware.logger'
@@ -160,6 +162,23 @@ class AwareLogger(with_metaclass(LoggerMetaClass)):
             unicode: Name of logging level
         """
         return text_type(self._log_levels.get(level, (u'Level %s' % level)))
+
+    def isEnabledFor(self, level):
+        """
+        Is this logger enabled for level 'level'?
+
+        Note: Wrapper around native logger method.
+
+        Args:
+            level (int): Logging level
+
+        Returns:
+            boolean: Whether or not logging is enabled for `level`.
+        """
+        # _get_caller will only work if the callstack is exactly 3
+        module_name, _, _, _ = _get_caller()
+        logger = logging.getLogger(module_name)
+        return logger.isEnabledFor(level)
 
     def _log(self, level, message, kwargs):
         # _get_caller will only work if the callstack is exactly 3

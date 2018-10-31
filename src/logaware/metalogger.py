@@ -6,7 +6,7 @@ from .logger import AwareLogger
 
 try:
     from simplejson import json
-except:
+except ImportError:
     import json
 
 
@@ -94,6 +94,8 @@ class LogMetaManager(object):
 
     To add other information to the log output, use ``set_meta``::
 
+        >>> import logging
+        >>> logging.getLogger().setLevel(logging.DEBUG)
         >>> meta = LogMetaManager()
         >>> meta.set_meta(user='foo', nothing=None)
         <LogMeta {"user":"foo"}>
